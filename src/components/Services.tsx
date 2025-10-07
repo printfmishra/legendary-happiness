@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Cloud, Network, Shield, Cog, Server, LineChart } from 'lucide-react';
+import Link from 'next/link';
 
 const Services = () => {
   const services = [
@@ -105,12 +106,12 @@ const Services = () => {
           <p className="text-lg mb-8 opacity-90">
             Let&apos;s discuss how I can help optimize your cloud and network infrastructure
           </p>
-          <a
-            href="#contact"
+          <Link
+            href="/contact"
             className="inline-block bg-white text-primary-copper px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
           >
             Schedule a Consultation
-          </a>
+          </Link>
         </motion.div>
       </div>
     </section>

@@ -18,7 +18,7 @@ export function urlFor(source: any) {
 
 // TypeScript interfaces for Sanity blog posts
 export interface SanityBlogPost {
-  summary?: string;
+  excerpt?: string;
   _id: string;
   _createdAt: string;
   title: string;
@@ -48,7 +48,7 @@ export async function getBlogPosts(): Promise<SanityBlogPost[]> {
     _createdAt,
     title,
     slug,
-    summary,
+    excerpt,
     mainImage,
     "categories": categories[]->title,
     publishedAt,
@@ -89,7 +89,7 @@ export async function getBlogPostBySlug(slug: string): Promise<SanityBlogPost | 
     _createdAt,
     title,
     slug,
-    summary,
+    excerpt,
     mainImage,
     "categories": categories[]->title,
     publishedAt,

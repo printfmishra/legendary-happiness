@@ -168,7 +168,7 @@ export default function Blog({ posts }: BlogProps) {
 
                   {/* Summary */}
                   <p className="text-text-secondary mb-4 line-clamp-3 leading-relaxed text-sm md:text-base">
-                    {post.summary || 'Click to read more...'}
+                    {post.excerpt || 'Click to read more...'}
                   </p>
 
                   {/* Meta Information */}

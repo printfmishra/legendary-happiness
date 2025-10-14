@@ -5,17 +5,17 @@ import { GraduationCap, MapPin, Briefcase } from 'lucide-react';
 
 const About = () => {
   const skills = [
-    { category: 'Cloud Platforms', items: ['AWS', 'Azure', 'Google Cloud Platform'] },
     { category: 'Network Technologies', items: ['Cisco', 'SD-WAN', 'VPN', 'Firewall'] },
     { category: 'DevOps & Automation', items: ['Terraform', 'Ansible', 'Docker', 'Kubernetes'] },
-    { category: 'Programming', items: ['Python', 'Bash', 'PowerShell', 'Go'] },
+    { category: 'Programming', items: ['Python', 'PowerShell', 'SQL', 'JavaScript'] },
+    { category: 'Frameworks/Tools', items: ['Django', 'FastAPI', 'REST API', 'Hugging Face', 'PyTorch'] },
+    { category: 'LLMs/RAG', items: ['LangChain', 'LangGraph', 'AutoGen', 'RAG', 'Prompt Engineering', 'OpenAI APIs', 'Gemini'] },
   ];
 
   const certifications = [
-    'AWS Certified Solutions Architect',
-    'Azure Administrator',
-    'Cisco CCNA',
+    'AWS Certified Advanced Networking - Specialty',
     'CompTIA Security+',
+    'Cisco Certified Network Associate',
   ];
 
   return (
@@ -32,7 +32,7 @@ const About = () => {
             About <span className="text-gradient">Me</span>
           </h2>
           <p className="text-xl text-text-secondary max-w-3xl mx-auto">
-            Passionate about building scalable cloud infrastructure and secure network solutions
+            Passionate about building scalable infrastructure and secure network solutions
           </p>
         </motion.div>
 
@@ -43,7 +43,7 @@ const About = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="bg-white p-8 rounded-2xl shadow-card"
+            className="bg-white px-8 pt-8 pb-6 rounded-2xl shadow-card"
           >
             <h3 className="text-2xl font-bold mb-6">Professional Profile</h3>
             <div className="space-y-4">
@@ -53,7 +53,7 @@ const About = () => {
                 </div>
                 <div>
                   <h4 className="font-semibold text-lg">Atul Mishra</h4>
-                  <p className="text-text-secondary">Cloud and Network Engineer</p>
+                  <p className="text-text-secondary">Network and AI/ML Engineer</p>
                 </div>
               </div>
 

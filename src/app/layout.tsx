@@ -6,8 +6,8 @@ import { ThemeProvider } from "@/contexts/ThemeContext";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Cloud & Network Solutions",
-  description: "Cloud and Network Engineer based in Australia | Master's in IT | Specializing in scalable infrastructure and secure network design",
+  title: "Network & AI/ML Solutions",
+  description: "Network and AI/ML Engineer based in Australia | Master's in IT | Specializing in scalable infrastructure and secure network design",
   keywords: ["Cloud Engineer", "Network Engineer", "AWS", "Azure", "Infrastructure", "DevOps"],
   authors: [{ name: "Atul Mishra" }],
   icons: {

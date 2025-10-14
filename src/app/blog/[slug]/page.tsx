@@ -1,9 +1,11 @@
 import { notFound } from 'next/navigation';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { blogPosts } from '@/lib/blogData';
+import PortableTextRenderer from '@/components/PortableTextRenderer';
+import { getBlogPosts, getBlogPostBySlug, formatDate, calculateReadTime, urlFor } from '@/lib/sanity';
 import { Calendar, Clock, User, ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 interface BlogPostPageProps {
   params: {
@@ -12,13 +14,14 @@ interface BlogPostPageProps {
 }
 
 export async function generateStaticParams() {
-  return blogPosts.map((post) => ({
-    slug: post.slug,
+  const posts = await getBlogPosts();
+  return posts.map((post) => ({
+    slug: post.slug.current,
   }));
 }
 
-export default function BlogPostPage({ params }: BlogPostPageProps) {
-  const post = blogPosts.find((p) => p.slug === params.slug);
+export default async function BlogPostPage({ params }: BlogPostPageProps) {
+  const post = await getBlogPostBySlug(params.slug);
 
   if (!post) {
     notFound();
@@ -34,17 +37,37 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
           <div className="flex items-center justify-between mb-8">
             <Link
               href="/blog"
-              className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors duration-300"
+              className="inline-flex items-center gap-2 text-primary-copper hover:opacity-80 transition-opacity duration-300"
             >
               <ArrowLeft className="w-4 h-4" />
               Back to Blog
             </Link>
 
-            {/* Category Badge */}
-            <div className="bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-semibold">
-              {post.category}
-            </div>
+            {/* Category Badges */}
+            {post.categories && post.categories.length > 0 && (
+              <div className="flex flex-wrap gap-2">
+                {post.categories.map((cat) => (
+                  <div key={cat} className="bg-primary-copper/10 text-primary-copper px-4 py-2 rounded-full text-sm font-semibold">
+                    {cat}
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
+
+          {/* Featured Image */}
+          {post.mainImage && (
+            <div className="mb-8 rounded-2xl overflow-hidden shadow-lg">
+              <Image
+                src={urlFor(post.mainImage).width(1200).height(600).url()}
+                alt={post.mainImage.alt || post.title}
+                width={1200}
+                height={600}
+                className="w-full h-auto"
+                priority
+              />
+            </div>
+          )}
 
           {/* Title */}
           <h1 className="text-4xl md:text-5xl font-bold theme-text-primary mb-6">
@@ -53,32 +76,35 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
 
           {/* Meta Information */}
           <div className="flex flex-wrap items-center gap-6 theme-text-secondary mb-8 pb-8 border-b theme-border">
-            <div className="flex items-center gap-2">
-              <User className="w-5 h-5" />
-              <span className="font-medium">{post.author}</span>
-            </div>
+            {post.author && (
+              <div className="flex items-center gap-2">
+                <User className="w-5 h-5" />
+                <span className="font-medium">{post.author.name}</span>
+              </div>
+            )}
             <div className="flex items-center gap-2">
               <Calendar className="w-5 h-5" />
-              <span>{post.date}</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Clock className="w-5 h-5" />
-              <span>{post.readTime}</span>
+              <span>{formatDate(post.publishedAt)}</span>
             </div>
           </div>
 
+          {/* Excerpt */}
+          {post.excerpt && (
+            <div className="text-xl theme-text-secondary italic mb-8 pb-8 border-b theme-border">
+              {post.excerpt}
+            </div>
+          )}
+
           {/* Content */}
           <div className="prose prose-lg max-w-none">
-            <div className="theme-text-secondary leading-relaxed whitespace-pre-line">
-              {post.content}
-            </div>
+            <PortableTextRenderer value={post.body} />
           </div>
 
           {/* Decorative Line */}
           <div className="mt-12 pt-8 border-t theme-border">
             <Link
               href="/blog"
-              className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-semibold transition-colors duration-300"
+              className="inline-flex items-center gap-2 text-primary-copper hover:opacity-80 font-semibold transition-opacity duration-300"
             >
               <ArrowLeft className="w-4 h-4" />
               View All Posts

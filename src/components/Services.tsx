@@ -1,11 +1,29 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Cloud, Network, Shield, Cog, Server, LineChart } from 'lucide-react';
+import { Cloud, Network, Shield, Cog, Server, Brain, Workflow, MessageSquare } from 'lucide-react';
 import Link from 'next/link';
 
 const Services = () => {
   const services = [
+    {
+      icon: Brain,
+      title: 'AI & Machine Learning',
+      description: 'Building intelligent, data-driven systems for smarter decisions. I develop scalable, explainable, and high-performing AI models.',
+      features: ['Forecasting with LSTM & XGBoost', 'Vision & NLP using Transformers', 'SHAP-based explainability', 'End-to-end MLOps pipelines'],
+    },
+    {
+      icon: Workflow,
+      title: 'Automation & DevOps',
+      description: 'Delivering efficiency and reliability through automation. I streamline workflows from build to deployment.',
+      features: ['CI/CD with GitHub & Docker', 'AWS setup (EC2, S3, Lambda)', 'FastAPI & Django integrations', 'Monitoring & scaling'],
+    },
+    {
+      icon: MessageSquare,
+      title: 'Chatbots & AI Agents',
+      description: 'Creating conversational systems that truly understand users. I blend language models with logic for context-aware dialogue.',
+      features: ['RAG-based chatbots', 'Multi-language interaction', 'API & database integration', 'Memory-enabled intelligent agents'],
+    },
     {
       icon: Cloud,
       title: 'Cloud Migration & Architecture',
@@ -21,8 +39,8 @@ const Services = () => {
     {
       icon: Shield,
       title: 'Security & Compliance',
-      description: 'Comprehensive security solutions ensuring compliance with industry standards and best practices.',
-      features: ['Security Audits', 'Compliance Frameworks', 'Threat Detection', 'Access Management'],
+      description: 'I implement IAM, VPC isolation, encryption, and secure network policies to protect infrastructure.',
+      features: ['IAM & Role-Based Access Controls', 'Network Firewalls & VPC Isolation', 'Encryption at Rest & in Transit', 'Security Monitoring'],
     },
     {
       icon: Cog,
@@ -35,12 +53,6 @@ const Services = () => {
       title: 'DevOps & Containerization',
       description: 'Modern DevOps practices with containerization and orchestration for scalable applications.',
       features: ['Docker', 'Kubernetes', 'Microservices', 'Container Security'],
-    },
-    {
-      icon: LineChart,
-      title: 'Monitoring & Optimization',
-      description: 'Comprehensive monitoring solutions with predictive analytics and performance optimization.',
-      features: ['Real-time Monitoring', 'Log Analytics', 'Performance Tuning', 'Capacity Planning'],
     },
   ];
 
@@ -58,7 +70,7 @@ const Services = () => {
             Services & <span className="text-gradient">Expertise</span>
           </h2>
           <p className="text-xl text-text-secondary max-w-3xl mx-auto">
-            Comprehensive cloud and network solutions tailored to your business needs
+            Comprehensive network and AI solutions tailored to your business needs
           </p>
         </motion.div>
 
@@ -104,7 +116,7 @@ const Services = () => {
         >
           <h3 className="text-3xl font-bold mb-4">Ready to Transform Your Infrastructure?</h3>
           <p className="text-lg mb-8 opacity-90">
-            Let&apos;s discuss how I can help optimize your cloud and network infrastructure
+            Let&apos;s discuss how I can help optimize your network and AI infrastructure
           </p>
           <Link
             href="/contact"

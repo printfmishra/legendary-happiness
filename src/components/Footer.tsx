@@ -29,7 +29,7 @@ const Footer = () => {
           <div>
             <h3 className="text-2xl font-bold text-primary-copper mb-4">Atul Mishra</h3>
             <p className="theme-text-secondary">
-              Cloud and Network Engineer specializing in scalable infrastructure and secure network design.
+              Network and AI/ML Engineer specializing in scalable infrastructure and secure network design.
             </p>
           </div>
 

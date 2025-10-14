@@ -27,6 +27,7 @@ const Contact = () => {
         },
         body: JSON.stringify({
           access_key: '0c8ea11e-9f4f-4f98-a777-42586e868712',
+          category: 'New form from Connect Page',
           name: formData.name,
           email: formData.email,
           subject: formData.subject,

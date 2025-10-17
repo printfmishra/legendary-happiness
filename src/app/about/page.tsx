@@ -7,6 +7,7 @@ import Image from 'next/image';
 import { getIntroductionPage } from '@/lib/introductionPage';
 import PortableTextRenderer from '@/components/PortableTextRenderer';
 import { urlFor } from '@/lib/sanity';
+import '../content-pages.css';
 
 export default async function AboutPage() {
   const intro = await getIntroductionPage();
@@ -23,7 +24,7 @@ export default async function AboutPage() {
   );
 
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen content-page">
       <Navbar />
       <article className="pt-32 pb-20 theme-bg-gradient">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -60,7 +61,7 @@ export default async function AboutPage() {
                     <h1 className="text-2xl md:text-3xl font-bold text-primary-copper mb-4">
                       {intro?.title || 'About Me'}
                     </h1>
-                    <p className="text-lg theme-text-secondary">
+                    <p className="text-lg theme-text-secondary italic">
                       {intro?.summary}
                     </p>
                   </div>
@@ -69,52 +70,9 @@ export default async function AboutPage() {
 
               {/* Content */}
               <div className="prose prose-lg max-w-none">
-                <div className="theme-card-bg rounded-[10px] p-6 md:p-10 shadow-card mb-8">
-                  <div className="theme-text-primary leading-relaxed">
-                    {intro?.professionalSummary && (
-                      <PortableTextRenderer value={intro.professionalSummary} />
-                    )}
-                  </div>
-                </div>
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div className="theme-card-bg rounded-[10px] p-6 shadow-card">
-                    <h3 className="text-xl font-bold text-primary-copper mb-4 flex items-center gap-3">
-                      <GraduationCap className="w-5 h-5" />
-                      Expertise Areas
-                    </h3>
-                    <ul className="theme-text-secondary space-y-2">
-                      {intro?.expertiseAreas?.length ? (
-                        intro.expertiseAreas.map((area, idx) => (
-                          <li key={area + idx} className="flex items-start gap-2">
-                            <span className="text-primary-copper mt-1">•</span>
-                            <span>{area}</span>
-                          </li>
-                        ))
-                      ) : (
-                        <li className="text-text-secondary">No expertise areas listed.</li>
-                      )}
-                    </ul>
-                  </div>
-
-                  <div className="theme-card-bg rounded-[10px] p-6 shadow-card">
-                    <h3 className="text-xl font-bold text-primary-copper mb-4 flex items-center gap-3">
-                      <Award className="w-5 h-5" />
-                      Core Values
-                    </h3>
-                    <ul className="theme-text-secondary space-y-2">
-                      {intro?.coreValues?.length ? (
-                        intro.coreValues.map((value, idx) => (
-                          <li key={value + idx} className="flex items-start gap-2">
-                            <span className="text-primary-copper mt-1">•</span>
-                            <span>{value}</span>
-                          </li>
-                        ))
-                      ) : (
-                        <li className="text-text-secondary">No core values listed.</li>
-                      )}
-                    </ul>
-                  </div>
-                </div>
+                {intro?.professionalSummary && (
+                  <PortableTextRenderer value={intro.professionalSummary} />
+                )}
               </div>
 
               {/* Contact CTA */}

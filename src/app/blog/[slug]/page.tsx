@@ -6,6 +6,10 @@ import { getBlogPosts, getBlogPostBySlug, formatDate, calculateReadTime, urlFor 
 import { Calendar, Clock, User, ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
+import '../../content-pages.css';
+
+// Revalidate this page every 60 seconds
+export const revalidate = 60;
 
 interface BlogPostPageProps {
   params: {
@@ -28,7 +32,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   }
 
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen content-page">
       <Navbar />
       
       <article className="pt-32 pb-20 theme-bg-gradient">
@@ -54,20 +58,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               </div>
             )}
           </div>
-
-          {/* Featured Image */}
-          {post.mainImage && (
-            <div className="mb-8 rounded-2xl overflow-hidden shadow-lg">
-              <Image
-                src={urlFor(post.mainImage).width(1200).height(600).url()}
-                alt={post.mainImage.alt || post.title}
-                width={1200}
-                height={600}
-                className="w-full h-auto"
-                priority
-              />
-            </div>
-          )}
 
           {/* Title */}
           <h1 className="text-4xl md:text-5xl font-bold theme-text-primary mb-6">

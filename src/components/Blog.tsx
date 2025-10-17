@@ -132,18 +132,45 @@ export default function Blog({ posts }: BlogProps) {
                 }}
                 className="theme-card-bg rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group"
               >
-              <div className="grid md:grid-cols-[280px,1fr] gap-0">
+              <div className="flex flex-col md:grid md:grid-cols-[280px,1fr] gap-0">
                 {/* Left Side - Image or Icon */}
-                <div className="relative bg-gradient-to-br from-primary-copper/5 via-primary-cream/30 to-primary-copper/10 flex items-center justify-center p-8 md:p-12">
-                  {post.mainImage ? (
-                    <div className="relative w-full h-48 md:h-full">
-                      <Image
-                        src={urlFor(post.mainImage).width(400).height(400).url()}
-                        alt={post.mainImage.alt || post.title}
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
+                <div className="relative theme-card-bg flex items-center justify-center p-1 h-48 md:h-auto">
+                  {(post.desktopImage || post.mobileImage) ? (
+                    <>
+                      {/* Mobile Image - 16:9 aspect ratio */}
+                      {post.mobileImage && (
+                        <div className="relative w-full h-full bg-neutral-50 rounded-lg overflow-hidden shadow-sm md:hidden">
+                          <Image
+                            src={urlFor(post.mobileImage).width(800).fit('max').url()}
+                            alt={post.mobileImage.alt || post.title}
+                            fill
+                            className="object-contain"
+                          />
+                        </div>
+                      )}
+                      {/* Desktop Image - 1:1 aspect ratio */}
+                      {post.desktopImage && (
+                        <div className="relative w-full h-full bg-neutral-50 rounded-lg overflow-hidden shadow-sm hidden md:block">
+                          <Image
+                            src={urlFor(post.desktopImage).width(1200).fit('max').url()}
+                            alt={post.desktopImage.alt || post.title}
+                            fill
+                            className="object-contain"
+                          />
+                        </div>
+                      )}
+                      {/* Fallback: Show desktop image on mobile if no mobile image */}
+                      {!post.mobileImage && post.desktopImage && (
+                        <div className="relative w-full h-full bg-neutral-50 rounded-lg overflow-hidden shadow-sm md:hidden">
+                          <Image
+                            src={urlFor(post.desktopImage).width(800).fit('max').url()}
+                            alt={post.desktopImage.alt || post.title}
+                            fill
+                            className="object-contain"
+                          />
+                        </div>
+                      )}
+                    </>
                   ) : (
                     <motion.div
                       whileHover={{ scale: 1.1, rotate: 5 }}
@@ -168,7 +195,7 @@ export default function Blog({ posts }: BlogProps) {
 
                   {/* Summary */}
                   <p className="text-text-secondary mb-4 line-clamp-3 leading-relaxed text-sm md:text-base">
-                    {post.excerpt || 'Click to read more...'}
+                    {post.summary || post.excerpt || 'Click to read more...'}
                   </p>
 
                   {/* Meta Information */}

@@ -44,7 +44,6 @@ const Hero = () => {
     { category: 'Network Technologies', items: ['Cisco', 'SD-WAN', 'VPN', 'Firewall'] },
     { category: 'DevOps & Automation', items: ['Terraform', 'Ansible', 'Docker', 'Kubernetes'] },
     { category: 'Programming', items: ['Python', 'PowerShell', 'SQL', 'JavaScript'] },
-    { category: 'Frameworks/Tools', items: ['Django', 'FastAPI', 'REST API', 'Hugging Face', 'PyTorch', 'Pandas', 'NumPy'] },
     { category: 'LLMs/RAG', items: ['LangChain', 'LangGraph', 'AutoGen', 'RAG', 'Prompt Engineering', 'OpenAI APIs', 'Gemini'] },
   ];
 
@@ -236,9 +235,8 @@ const Hero = () => {
                 </h2>
                 
                 <p 
-                  className="mb-4 sm:mb-5 md:mb-6 leading-relaxed line-clamp-2 sm:line-clamp-none" 
+                  className="mb-4 sm:mb-5 md:mb-6 leading-relaxed line-clamp-2 sm:line-clamp-3 md:line-clamp-none text-base" 
                   style={{ 
-                    fontSize: 'clamp(0.75rem, 1.5vw, 1.125rem)',
                     color: 'var(--text-primary)'
                   }}
                 >
@@ -257,7 +255,7 @@ const Hero = () => {
             </div>
           </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-12 lg:items-start">
+          <div className="grid lg:grid-cols-2 gap-12">
             {/* Left Column */}
             <div className="space-y-6 flex flex-col h-full">
               {/* Profile Card / About Me */}
@@ -267,18 +265,18 @@ const Hero = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
               whileHover={{ y: -5 }}
-              className="theme-card-bg p-6 rounded-2xl shadow-card hover:shadow-card-hover transition-shadow duration-300 flex-1 flex flex-col justify-between"
+              className="theme-card-bg p-6 rounded-2xl shadow-card hover:shadow-card-hover transition-shadow duration-300 flex-grow"
             >
               <div>
-              <h3 className="text-2xl font-bold mb-6">About Me</h3>
-              <div className="space-y-4">
+              <h3 className="font-semibold text-hero-h4 mb-6">About Me</h3>
+              <div className="space-y-2">
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 theme-card-bg border theme-border rounded-lg flex items-center justify-center flex-shrink-0">
                     <Briefcase className="text-primary-copper" size={24} />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-lg">Atul Mishra</h4>
-                    <p className="text-text-secondary">Network and AI/ML Engineer</p>
+                    <h3 className="font-semibold text-hero-h4">Atul Mishra</h3>
+                    <p className="text-text-secondary text-hero-secondary">Network and AI/ML Engineer</p>
                   </div>
                 </div>
 
@@ -287,8 +285,8 @@ const Hero = () => {
                     <GraduationCap className="text-primary-copper" size={24} />
                   </div>
                   <div>
-                    <h4 className="font-semibold">Education</h4>
-                    <p className="text-text-secondary">Master&apos;s Degree in Information Technology</p>
+                    <h3 className="font-semibold text-hero-h4">Education</h3>
+                    <p className="text-text-secondary text-hero-secondary">Master&apos;s Degree in Information Technology</p>
                   </div>
                 </div>
 
@@ -297,14 +295,14 @@ const Hero = () => {
                     <MapPin className="text-primary-copper" size={24} />
                   </div>
                   <div>
-                    <h4 className="font-semibold">Location</h4>
-                    <p className="text-text-secondary">Australia</p>
+                    <h3 className="font-semibold text-hero-h4">Location</h3>
+                    <p className="text-text-secondary text-hero-secondary">Australia</p>
                   </div>
                 </div>
               </div>
 
               <div className="mt-8">
-                <h4 className="font-semibold mb-4">Certifications</h4>
+                <h3 className="font-semibold text-hero-h4 mb-4">Certifications</h3>
                 <div className="grid grid-cols-1 gap-3">
                   {certifications.map((cert, index) => (
                     <div
@@ -319,31 +317,9 @@ const Hero = () => {
               </div>
               </div>
             </motion.div>
-
-            {/* Programming Tile - Below About Me */}
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="theme-card-bg p-6 rounded-2xl shadow-card hover:shadow-card-hover transition-shadow duration-300"
-              whileHover={{ y: -5 }}
-            >
-              <h4 className="font-semibold text-lg mb-4">Programming</h4>
-              <div className="flex flex-wrap gap-2">
-                {skillsDetailed.find(sg => sg.category === 'Programming')?.items.map((skill, idx) => (
-                  <span
-                    key={idx}
-                    className="px-4 py-2 bg-primary-copper text-white rounded-lg text-sm font-medium hover:opacity-90 transition-colors"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
             </div>
 
-            {/* Right side - Skills Grid (excluding Programming) */}
+            {/* Right side - Skills Grid (including Programming) */}
             <div className="space-y-6">
               <motion.div
                 initial={{ opacity: 0, x: 30 }}
@@ -352,7 +328,7 @@ const Hero = () => {
                 transition={{ duration: 0.6 }}
                 className="space-y-6"
               >
-              {skillsDetailed.filter(sg => sg.category !== 'Programming').map((skillGroup, index) => (
+              {skillsDetailed.map((skillGroup, index) => (
                 <motion.div 
                   key={index} 
                   className="theme-card-bg p-6 rounded-2xl shadow-card hover:shadow-card-hover transition-shadow duration-300"

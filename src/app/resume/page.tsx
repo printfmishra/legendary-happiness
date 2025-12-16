@@ -1,13 +1,13 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, Suspense } from 'react';
 import { ArrowLeft, Mail, Building2, Send, RotateCw, User } from 'lucide-react';
 import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { useSearchParams } from 'next/navigation';
 
-export default function ResumePage() {
+function ResumeForm() {
   const searchParams = useSearchParams();
   const memberName = searchParams.get('member');
   
@@ -222,5 +222,21 @@ export default function ResumePage() {
       </section>
       <Footer />
     </main>
+  );
+}
+
+export default function ResumePage() {
+  return (
+    <Suspense fallback={
+      <main className="min-h-screen theme-bg-gradient">
+        <Navbar />
+        <div className="min-h-screen flex items-center justify-center">
+          <div className="text-text-primary">Loading...</div>
+        </div>
+        <Footer />
+      </main>
+    }>
+      <ResumeForm />
+    </Suspense>
   );
 }

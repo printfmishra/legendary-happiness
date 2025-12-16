@@ -86,7 +86,7 @@ export default async function TeamMemberPage({ params }: { params: { slug: strin
       <div className="prose prose-lg max-w-none">
         <div className="theme-card-bg rounded-[10px] p-6 md:p-8 shadow-card">
           <p className="text-text-secondary mb-4">
-            Detailed profile information will be available soon. We're currently updating our team member profiles.
+            Detailed profile information will be available soon. We&apos;re currently updating our team member profiles.
           </p>
           <p className="text-sm text-text-secondary">
             Please check back later or contact us for more information.

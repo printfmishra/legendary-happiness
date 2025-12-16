@@ -1,6 +1,6 @@
 'use client';
 
-import { Github, Linkedin, Mail, Heart } from 'lucide-react';
+import { Github, Linkedin, Mail, Heart, Facebook } from 'lucide-react';
 import Link from 'next/link';
 
 const Footer = () => {
@@ -12,12 +12,12 @@ const Footer = () => {
       { name: 'Projects', href: '/projects' },
       { name: 'Services', href: '/services' },
       { name: 'Blog', href: '/blog' },
-      { name: 'Tools', href: '/tools' },
     ],
     social: [
-      { name: 'GitHub', href: 'https://github.com/printfmishra', icon: Github },
-      { name: 'LinkedIn', href: 'https://www.linkedin.com/in/printfmishra/', icon: Linkedin },
-      { name: 'Email', href: 'mailto:atul@mishrasolutions.com', icon: Mail },
+      { name: 'GitHub', href: 'https://github.com/Mishra-solutions', icon: Github },
+      { name: 'LinkedIn', href: 'https://www.linkedin.com/company/mishra-solutions/', icon: Linkedin },
+      { name: 'Facebook', href: 'https://www.facebook.com/people/Mishra-solutions/61584770594193/', icon: Facebook },
+      { name: 'Email', href: 'mailto:support@mishrasolutions.com', icon: Mail },
     ],
   };
 
@@ -27,9 +27,9 @@ const Footer = () => {
         <div className="grid md:grid-cols-3 gap-8 mb-8">
           {/* Brand */}
           <div>
-            <h3 className="text-2xl font-bold text-primary-copper mb-4">Atul Mishra</h3>
+            <h3 className="text-2xl font-bold text-primary-copper mb-4">Mishra Solutions</h3>
             <p className="theme-text-secondary">
-              Network and AI/ML Engineer specializing in scalable infrastructure and secure network design.
+              Our collaborative team delivers innovative infrastructure solutions, combining expertise in cloud architecture, AI/ML, and secure network design.
             </p>
           </div>
 

@@ -1,15 +1,20 @@
 'use client';
 
-import { useState } from 'react';
-import { ArrowLeft, Mail, Building2, Send, RotateCw } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { ArrowLeft, Mail, Building2, Send, RotateCw, User } from 'lucide-react';
 import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import { useSearchParams } from 'next/navigation';
 
 export default function ResumePage() {
+  const searchParams = useSearchParams();
+  const memberName = searchParams.get('member');
+  
   const [formData, setFormData] = useState({
     email: '',
     company: '',
+    memberName: memberName || '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
@@ -30,7 +35,8 @@ export default function ResumePage() {
           category: 'New form from Resume Request',
           email: formData.email,
           company: formData.company,
-          subject: 'Resume Request',
+          memberName: formData.memberName,
+          subject: `Resume Request${formData.memberName ? ` - ${formData.memberName}` : ''}`,
         }),
       });
 
@@ -41,7 +47,7 @@ export default function ResumePage() {
         setSubmitStatus('success');
         // Reset form after 1 minute (60000ms)
         setTimeout(() => {
-          setFormData({ email: '', company: '' });
+          setFormData({ email: '', company: '', memberName: memberName || '' });
           setSubmitStatus('idle');
         }, 60000);
       } else {
@@ -63,7 +69,7 @@ export default function ResumePage() {
   };
 
   const handleRefresh = () => {
-    setFormData({ email: '', company: '' });
+    setFormData({ email: '', company: '', memberName: memberName || '' });
     setSubmitStatus('idle');
     setIsSubmitting(false);
   };
@@ -99,8 +105,14 @@ export default function ResumePage() {
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
               Request <span className="text-gradient">Resume</span>
             </h1>
+            {memberName && (
+              <div className="mb-4 inline-flex items-center gap-2 px-4 py-2 bg-primary-copper/10 border-2 border-primary-copper rounded-lg">
+                <User size={20} className="text-primary-copper" />
+                <span className="text-primary-copper font-semibold">{memberName}</span>
+              </div>
+            )}
             <p className="text-lg text-text-secondary max-w-2xl">
-              Please provide your email address and company name to receive my resume.
+              Please provide your email address and company name to receive {memberName ? `${memberName}'s` : 'the'} resume.
             </p>
           </div>
 
@@ -108,6 +120,11 @@ export default function ResumePage() {
           <div className="max-w-2xl mx-auto">
             <div className="theme-card-bg rounded-2xl shadow-card p-8 md:p-12 theme-border border">
               <form onSubmit={handleSubmit} className="space-y-6">
+                {/* Hidden Member Name Field */}
+                {memberName && (
+                  <input type="hidden" name="memberName" value={formData.memberName} />
+                )}
+                
                 {/* Email Field */}
                 <div>
                   <label

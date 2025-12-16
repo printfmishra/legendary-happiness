@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Cloud, Network, Shield, Cog, Server, Brain, Workflow, MessageSquare } from 'lucide-react';
+import { Cloud, Network, Shield, Cog, Server, Brain, Workflow, MessageSquare, Database } from 'lucide-react';
 import Link from 'next/link';
 
 const Services = () => {
@@ -9,19 +9,19 @@ const Services = () => {
     {
       icon: Brain,
       title: 'AI & Machine Learning',
-      description: 'Building intelligent, data-driven systems for smarter decisions. I develop scalable, explainable, and high-performing AI models.',
+      description: 'Building intelligent, data-driven systems for smarter decisions. We develop scalable, explainable, and high-performing AI models.',
       features: ['Forecasting with LSTM & XGBoost', 'Vision & NLP using Transformers', 'SHAP-based explainability', 'End-to-end MLOps pipelines'],
     },
     {
       icon: Workflow,
       title: 'Automation & DevOps',
-      description: 'Delivering efficiency and reliability through automation. I streamline workflows from build to deployment.',
+      description: 'Delivering efficiency and reliability through automation. We streamline workflows from build to deployment.',
       features: ['CI/CD with GitHub & Docker', 'AWS setup (EC2, S3, Lambda)', 'FastAPI & Django integrations', 'Monitoring & scaling'],
     },
     {
       icon: MessageSquare,
       title: 'Chatbots & AI Agents',
-      description: 'Creating conversational systems that truly understand users. I blend language models with logic for context-aware dialogue.',
+      description: 'Creating conversational systems that truly understand users. We blend language models with logic for context-aware dialogue.',
       features: ['RAG-based chatbots', 'Multi-language interaction', 'API & database integration', 'Memory-enabled intelligent agents'],
     },
     {
@@ -39,7 +39,7 @@ const Services = () => {
     {
       icon: Shield,
       title: 'Security & Compliance',
-      description: 'I implement IAM, VPC isolation, encryption, and secure network policies to protect infrastructure.',
+      description: 'We implement IAM, VPC isolation, encryption, and secure network policies to protect infrastructure.',
       features: ['IAM & Role-Based Access Controls', 'Network Firewalls & VPC Isolation', 'Encryption at Rest & in Transit', 'Security Monitoring'],
     },
     {
@@ -53,6 +53,12 @@ const Services = () => {
       title: 'DevOps & Containerization',
       description: 'Modern DevOps practices with containerization and orchestration for scalable applications.',
       features: ['Docker', 'Kubernetes', 'Microservices', 'Container Security'],
+    },
+    {
+      icon: Database,
+      title: 'Big Data & Analytics',
+      description: 'Enterprise data platform solutions with Cloudera, Snowflake, and Databricks for scalable analytics and data engineering.',
+      features: ['Cloudera Data Platform', 'Snowflake Data Warehousing', 'Databricks Lakehouse', 'ETL & Data Pipelines'],
     },
   ];
 
@@ -116,7 +122,7 @@ const Services = () => {
         >
           <h3 className="text-3xl font-bold mb-4">Ready to Transform Your Infrastructure?</h3>
           <p className="text-lg mb-8 opacity-90">
-            Let&apos;s discuss how I can help optimize your network and AI infrastructure
+            Let&apos;s discuss how we can help optimize your network and AI infrastructure
           </p>
           <Link
             href="/contact"

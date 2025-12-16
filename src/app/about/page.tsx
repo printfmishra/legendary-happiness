@@ -85,12 +85,20 @@ export default async function AboutPage() {
                 Interested in collaborating on AI projects or discussing innovative solutions? 
                 I&#39;m always open to new opportunities and exciting challenges.
                   </p>
-                  <Link
-                    href="/contact"
-                    className="inline-flex items-center gap-2 bg-primary-copper text-white px-6 py-3 rounded-lg hover:opacity-90 transition-all duration-200 hover:scale-105 shadow-lg font-semibold"
-                  >
-                    Get In Touch
-                  </Link>
+                  <div className="flex flex-wrap gap-4 justify-center">
+                    <Link
+                      href="/contact"
+                      className="inline-flex items-center gap-2 bg-primary-copper text-white px-6 py-3 rounded-lg hover:opacity-90 transition-all duration-200 hover:scale-105 shadow-lg font-semibold"
+                    >
+                      Get In Touch
+                    </Link>
+                    <Link
+                      href="/resume?member=Atul%20Mishra"
+                      className="inline-flex items-center gap-2 theme-card-bg text-primary-copper px-6 py-3 rounded-lg border-2 border-primary-copper hover:bg-primary-copper/10 transition-all duration-200 font-semibold"
+                    >
+                      Request Resume
+                    </Link>
+                  </div>
                 </div>
               </div>
 

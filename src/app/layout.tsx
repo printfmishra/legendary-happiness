@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Network & AI/ML Solutions",
-  description: "Network and AI/ML Engineer based in Australia | Master's in IT | Specializing in scalable infrastructure and secure network design",
+  description: "Expert team delivering innovative solutions | Based in Australia | Specializing in collaborative infrastructure development and secure network architecture",
   keywords: ["Cloud Engineer", "Network Engineer", "AWS", "Azure", "Infrastructure", "DevOps"],
   authors: [{ name: "Atul Mishra" }],
   icons: {

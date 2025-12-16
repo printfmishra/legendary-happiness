@@ -72,7 +72,7 @@ const Contact = () => {
             Let&apos;s <span className="text-gradient">Connect</span>
           </h2>
           <p className="text-xl text-text-secondary max-w-3xl mx-auto">
-            Have a project in mind? Let&apos;s discuss how I can help transform your infrastructure
+            Have a project in mind? Let&apos;s discuss how we can help transform your infrastructure
           </p>
         </motion.div>
 
@@ -86,7 +86,7 @@ const Contact = () => {
           >
             <h3 className="text-2xl font-bold mb-6">Get in Touch</h3>
             <p className="text-text-secondary mb-8">
-              I&apos;m always interested in hearing about new opportunities and discussing innovative cloud and network solutions.
+              We&apos;re always interested in hearing about new opportunities and discussing innovative cloud and network solutions.
             </p>
 
             <div className="space-y-6">
@@ -106,8 +106,8 @@ const Contact = () => {
                 </div>
                 <div>
                   <h4 className="font-semibold mb-1">Email</h4>
-                  <a href="mailto:atul@mishrasolutions.com" className="text-primary-copper hover:opacity-80">
-                    atul@mishrasolutions.com
+                  <a href="mailto:support@mishrasolutions.com" className="text-primary-copper hover:opacity-80">
+                    support@mishrasolutions.com
                   </a>
                 </div>
               </div>
@@ -119,12 +119,12 @@ const Contact = () => {
                 <div>
                   <h4 className="font-semibold mb-1">LinkedIn</h4>
                   <a
-                    href="https://www.linkedin.com/in/printfmishra/"
+                    href="https://www.linkedin.com/company/mishra-solutions/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-primary-copper hover:opacity-80"
                   >
-                    linkedin.com/in/printfmishra
+                    linkedin.com/company/mishra-solutions
                   </a>
                 </div>
               </div>
@@ -136,12 +136,12 @@ const Contact = () => {
                 <div>
                   <h4 className="font-semibold mb-1">GitHub</h4>
                   <a
-                    href="https://github.com/printfmishra"
+                    href="https://github.com/Mishra-solutions"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-primary-copper hover:opacity-80"
                   >
-                    github.com/printfmishra
+                    github.com/Mishra-solutions
                   </a>
                 </div>
               </div>

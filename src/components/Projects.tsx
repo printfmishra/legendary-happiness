@@ -1,92 +1,40 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Wrench } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Project } from '@/lib/projects';
+import { urlFor } from '@/lib/sanity';
+import Image from 'next/image';
+import Link from 'next/link';
 
 const Projects = () => {
-  // Projects data hidden for now - coming soon
-  const projects = [
-    {
-      title: 'Multi-Cloud Infrastructure',
-      description: 'Designed and implemented a hybrid cloud solution spanning AWS and Azure with automated failover and disaster recovery.',
-      technologies: ['AWS', 'Azure', 'Terraform', 'Kubernetes'],
-      image: '🌐',
-      link: '#',
-      github: '#',
-    },
-    {
-      title: 'Enterprise Network Redesign',
-      description: 'Led complete network infrastructure overhaul for 500+ endpoints, implementing SD-WAN and zero-trust security.',
-      technologies: ['Cisco', 'SD-WAN', 'Firewall', 'VPN'],
-      image: '🔒',
-      link: '#',
-      github: '#',
-    },
-    {
-      title: 'CI/CD Pipeline Automation',
-      description: 'Built automated deployment pipeline reducing deployment time by 70% with comprehensive monitoring and rollback capabilities.',
-      technologies: ['Docker', 'Jenkins', 'Ansible', 'AWS'],
-      image: '⚡',
-      link: '#',
-      github: '#',
-    },
-    {
-      title: 'Cloud Cost Optimization',
-      description: 'Implemented cost optimization strategies reducing cloud spending by 40% while improving performance and reliability.',
-      technologies: ['AWS', 'Python', 'CloudWatch', 'Lambda'],
-      image: '💰',
-      link: '#',
-      github: '#',
-    },
-    {
-      title: 'Security Compliance Framework',
-      description: 'Developed comprehensive security framework achieving ISO 27001 and SOC 2 compliance for enterprise infrastructure.',
-      technologies: ['Security', 'Compliance', 'Audit', 'AWS'],
-      image: '🛡️',
-      link: '#',
-      github: '#',
-    },
-    {
-      title: 'Infrastructure Monitoring',
-      description: 'Deployed centralized monitoring solution with real-time alerting and predictive analytics for 100+ servers.',
-      technologies: ['Prometheus', 'Grafana', 'ELK', 'Python'],
-      image: '📊',
-      link: '#',
-      github: '#',
-    },
-    {
-      title: 'Kubernetes Cluster Management',
-      description: 'Architected and deployed production-ready Kubernetes clusters with auto-scaling, service mesh, and GitOps workflows.',
-      technologies: ['Kubernetes', 'Istio', 'ArgoCD', 'Helm'],
-      image: '☸️',
-      link: '#',
-      github: '#',
-    },
-    {
-      title: 'Serverless Application Platform',
-      description: 'Built scalable serverless platform handling 1M+ requests daily with event-driven architecture and microservices.',
-      technologies: ['AWS Lambda', 'API Gateway', 'DynamoDB', 'SQS'],
-      image: '🚀',
-      link: '#',
-      github: '#',
-    },
-    {
-      title: 'Network Security Automation',
-      description: 'Automated security policy deployment across multi-vendor firewall infrastructure with compliance validation.',
-      technologies: ['Python', 'Ansible', 'Palo Alto', 'FortiGate'],
-      image: '🔐',
-      link: '#',
-      github: '#',
-    },
-    {
-      title: 'Disaster Recovery Solution',
-      description: 'Implemented cross-region disaster recovery strategy with RPO < 15min and RTO < 1hr for mission-critical systems.',
-      technologies: ['AWS', 'Azure', 'Veeam', 'Terraform'],
-      image: '🔄',
-      link: '#',
-      github: '#',
-    },
-  ];
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchProjects() {
+      try {
+        console.log('🚀 Fetching projects via API route...');
+        
+        const response = await fetch('/api/projects', {
+          cache: 'no-store',
+        });
+        
+        if (!response.ok) {
+          throw new Error('Failed to fetch projects');
+        }
+        
+        const data = await response.json();
+        console.log('📦 Received projects:', data.length);
+        setProjects(data);
+      } catch (error) {
+        console.error('❌ Error loading projects:', error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchProjects();
+  }, []);
 
   return (
     <section id="projects" className="pt-32 pb-20 theme-bg-gradient">
@@ -106,41 +54,54 @@ const Projects = () => {
           </p>
         </motion.div>
 
-        {/* Coming Soon Message */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="max-w-2xl mx-auto text-center"
-        >
-          <div className="theme-card-bg rounded-2xl shadow-card p-12 md:p-16">
-            <motion.div
-              animate={{ 
-                rotate: [0, 10, -10, 10, 0],
-              }}
-              transition={{ 
-                duration: 2,
-                repeat: Infinity,
-                repeatDelay: 3
-              }}
-              className="text-7xl mb-6"
-            >
-              <Wrench className="w-20 h-20 mx-auto text-primary-copper" />
-            </motion.div>
-            <h3 className="text-3xl font-bold mb-4 theme-text-primary">
-              Coming Soon
-            </h3>
-            <p className="text-text-secondary text-lg mb-6">
-              I&apos;m currently working on showcasing my latest projects. Check back soon to see my featured work!
-            </p>
-            <div className="flex justify-center gap-2">
-              <span className="w-3 h-3 bg-primary-copper rounded-full animate-pulse"></span>
-              <span className="w-3 h-3 bg-primary-copper rounded-full animate-pulse" style={{ animationDelay: '0.2s' }}></span>
-              <span className="w-3 h-3 bg-primary-copper rounded-full animate-pulse" style={{ animationDelay: '0.4s' }}></span>
-            </div>
+        {loading ? (
+          <div className="text-center py-12">
+            <div className="inline-block w-12 h-12 border-4 border-primary-copper border-t-transparent rounded-full animate-spin"></div>
+            <p className="text-text-secondary mt-4">Loading projects...</p>
           </div>
-        </motion.div>
+        ) : projects.length === 0 ? (
+          <div className="text-center py-12">
+            <p className="text-text-secondary">No projects available yet. Check back soon!</p>
+          </div>
+        ) : (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {projects.map((project, index) => (
+              <Link
+                key={project._id}
+                href={`/projects/${project.slug.current}`}
+              >
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  className="theme-card-bg rounded-2xl shadow-card hover:shadow-card-hover transition-all duration-300 overflow-hidden group cursor-pointer h-full"
+                >
+                  {/* Project Image */}
+                  <div className="relative h-48 bg-gradient-to-br from-primary-copper/20 to-primary-copper/5">
+                    {project.mainImage ? (
+                      <Image
+                        src={urlFor(project.mainImage).width(600).height(400).url()}
+                        alt={project.mainImage.alt || project.title}
+                        fill
+                        className="object-cover"
+                      />
+                    ) : (
+                      <div className="flex items-center justify-center h-full text-6xl">
+                        📊
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Project Info */}
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold mb-2 theme-text-primary">{project.title}</h3>
+                  </div>
+                </motion.div>
+              </Link>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

@@ -43,14 +43,38 @@ const Hero = () => {
   const skillsDetailed = [
     { category: 'Network Technologies', items: ['Cisco', 'SD-WAN', 'VPN', 'Firewall'] },
     { category: 'DevOps & Automation', items: ['Terraform', 'Ansible', 'Docker', 'Kubernetes'] },
+    { category: 'Big Data & Analytics', items: ['Snowflake', 'Databricks', 'Cloudera'] },
     { category: 'Programming', items: ['Python', 'PowerShell', 'SQL', 'JavaScript'] },
     { category: 'LLMs/RAG', items: ['LangChain', 'LangGraph', 'AutoGen', 'RAG', 'Prompt Engineering', 'OpenAI APIs', 'Gemini'] },
   ];
 
   const certifications = [
-    'AWS Certified Advanced Networking - Specialty',
-    'CompTIA Security+',
-    'Cisco Certified Network Associate',
+    {
+      category: 'Networking & Cloud',
+      items: [
+        'AWS Certified Advanced Networking - Specialty',
+        'CompTIA Security+',
+        'Cisco Certified Network Associate',
+      ]
+    },
+    {
+      category: 'AI/ML & Data Science',
+      items: [
+        'Complete Machine Learning & Data Science Program',
+        'Introducing Generative AI with AWS',
+        'Certificate of Training - Data Science',
+        'Generative AI with Large Language Models',
+        'Deep Learning Specialization',
+        'Deep Learning Fundamentals Certification',
+      ]
+    },
+    {
+      category: 'DevOps & Big Data',
+      items: [
+        'Docker Foundations Professional Certificate',
+        'Big Data with PySpark',
+      ]
+    },
   ];
 
   return (
@@ -63,12 +87,6 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <div className="mb-6">
-              <span className="text-primary-copper font-semibold text-sm uppercase tracking-wider">
-                Network & AI/ML Engineer
-              </span>
-            </div>
-            
             <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
               Engineering Infrastructure
               <br />
@@ -79,8 +97,8 @@ const Hero = () => {
             </h1>
             
             <p className="text-xl text-text-secondary mb-8 leading-relaxed">
-              Network and AI/ML Engineer based in Australia | Master&apos;s in IT | 
-              Specializing in scalable infrastructure development and secure network design
+              Expert team delivering innovative solutions | Based in Australia | 
+              Specializing in collaborative infrastructure development and secure network architecture
             </p>
 
             {/* Trust Indicators */}
@@ -98,7 +116,7 @@ const Hero = () => {
                 ))}
               </div>
               <span className="text-sm text-text-secondary">
-                Certified in AWS, CompTIA & Cisco
+                Certified in AWS, DeepLearning.AI & Cisco
               </span>
             </div>
           </motion.div>
@@ -147,14 +165,8 @@ const Hero = () => {
                 href="/projects"
                 className="inline-flex items-center justify-center gap-2 bg-primary-copper text-white px-8 py-4 rounded-lg hover:opacity-90 transition-all duration-200 hover:scale-105 shadow-lg hover:shadow-xl flex-1"
               >
-                View My Work
+                View Our Work
                 <ArrowRight size={20} />
-              </Link>
-              <Link
-                href="/resume"
-                className="inline-flex items-center justify-center gap-2 theme-card-bg text-primary-copper px-8 py-4 rounded-lg border-2 border-primary-copper hover:bg-primary-copper/10 transition-all duration-200 flex-1"
-              >
-                Request Resume
               </Link>
             </div>
 
@@ -188,11 +200,11 @@ const Hero = () => {
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Professional <span className="text-gradient">Profile</span>
+              Our Professional <span className="text-gradient">Team</span>
             </h2>
           </motion.div>
 
-          {/* About Us Section - Centered Hero Box */}
+          {/* Duplicate Section - Second Team Member */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -244,21 +256,128 @@ const Hero = () => {
                   Specializing in building scalable AI solutions and cloud infrastructure.
                 </p>
                 
-                <Link
-                  href="/about"
-                  className="inline-flex items-center gap-2 bg-primary-copper text-white px-4 sm:px-5 md:px-6 py-2 sm:py-2.5 md:py-3 rounded-lg hover:opacity-90 transition-all duration-200 hover:scale-105 shadow-lg text-sm sm:text-base"
-                >
-                  Read More
-                  <ArrowRight size={16} className="sm:w-5 sm:h-5" />
-                </Link>
+                <div className="flex flex-wrap gap-3">
+                  <Link
+                    href="/about"
+                    className="inline-flex items-center gap-2 bg-primary-copper text-white px-4 sm:px-5 md:px-6 py-2 sm:py-2.5 md:py-3 rounded-lg hover:opacity-90 transition-all duration-200 hover:scale-105 shadow-lg text-sm sm:text-base"
+                  >
+                    Read More
+                    <ArrowRight size={16} className="sm:w-5 sm:h-5" />
+                  </Link>
+                </div>
               </div>
             </div>
           </motion.div>
 
+          {/* Two Half-Width Team Member Tiles */}
+          <div className="grid md:grid-cols-2 gap-6 mb-16">
+            {/* Team Member 1 - Kamesh */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+            >
+              <div className="relative w-full theme-card-bg rounded-[10px] p-4 sm:p-6 overflow-visible shadow-card min-h-[300px] sm:min-h-[350px]">
+                {/* Portrait Image - Top */}
+                <div className="w-24 h-24 sm:w-32 sm:h-32 mx-auto mb-4 rounded-full overflow-hidden border border-amber-800/40">
+                  <Image
+                    src="/img/Suraj profile image.png"
+                    alt="Team Member - Professional"
+                    width={150}
+                    height={150}
+                    className="object-cover w-full h-full"
+                  />
+                </div>
+
+                {/* Text Content */}
+                <div className="text-center">
+                  <h3 
+                    className="font-bold mb-2 text-primary-copper text-xl sm:text-2xl"
+                  >
+                    Kamesh Dubey
+                  </h3>
+                  
+                  <p className="text-sm sm:text-base text-primary-copper/80 mb-3 font-medium">
+                    Senior Developer
+                  </p>
+                  
+                  <p 
+                    className="mb-4 leading-relaxed text-sm sm:text-base" 
+                    style={{ 
+                      color: 'var(--text-primary)'
+                    }}
+                  >
+                    Passionate about building innovative solutions with expertise in modern web technologies and cloud architecture.
+                  </p>
+                  
+                  <Link
+                    href="/team/kamesh-dubey"
+                    className="inline-flex items-center gap-2 bg-primary-copper text-white px-4 py-2 rounded-lg hover:opacity-90 transition-all duration-200 hover:scale-105 shadow-lg text-sm"
+                  >
+                    View Profile
+                    <ArrowRight size={14} />
+                  </Link>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Team Member 2 - Lata */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <div className="relative w-full theme-card-bg rounded-[10px] p-4 sm:p-6 overflow-visible shadow-card min-h-[300px] sm:min-h-[350px]">
+                {/* Portrait Image - Top */}
+                <div className="w-24 h-24 sm:w-32 sm:h-32 mx-auto mb-4 rounded-full overflow-hidden border border-amber-800/40">
+                  <Image
+                    src="/img/lata profile pic.png"
+                    alt="Team Member - Specialist"
+                    width={150}
+                    height={150}
+                    className="object-cover w-full h-full"
+                  />
+                </div>
+
+                {/* Text Content */}
+                <div className="text-center">
+                  <h3 
+                    className="font-bold mb-2 text-primary-copper text-xl sm:text-2xl"
+                  >
+                    Lata Mishra
+                  </h3>
+                  
+                  <p className="text-sm sm:text-base text-primary-copper/80 mb-3 font-medium">
+                    AI/ML Specialist
+                  </p>
+                  
+                  <p 
+                    className="mb-4 leading-relaxed text-sm sm:text-base" 
+                    style={{ 
+                      color: 'var(--text-primary)'
+                    }}
+                  >
+                    Specializing in machine learning models and artificial intelligence solutions for complex business challenges.
+                  </p>
+                  
+                  <Link
+                    href="/team/lata-mishra"
+                    className="inline-flex items-center gap-2 bg-primary-copper text-white px-4 py-2 rounded-lg hover:opacity-90 transition-all duration-200 hover:scale-105 shadow-lg text-sm"
+                  >
+                    View Profile
+                    <ArrowRight size={14} />
+                  </Link>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Left Column */}
             <div className="space-y-6 flex flex-col h-full">
-              {/* Profile Card / About Me */}
+              {/* Team Certifications */}
               <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -268,52 +387,21 @@ const Hero = () => {
               className="theme-card-bg p-6 rounded-2xl shadow-card hover:shadow-card-hover transition-shadow duration-300 flex-grow"
             >
               <div>
-              <h3 className="font-semibold text-hero-h4 mb-6">About Me</h3>
-              <div className="space-y-2">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 theme-card-bg border theme-border rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Briefcase className="text-primary-copper" size={24} />
+              <h3 className="font-semibold text-hero-h4 mb-6">Team Certifications</h3>
+              <div className="space-y-10">
+                {certifications.map((group, groupIndex) => (
+                  <div key={groupIndex} className="space-y-3">
+                    {group.items.map((cert, certIndex) => (
+                      <div
+                        key={certIndex}
+                        className="flex items-center gap-3 p-3 theme-card-bg border theme-border rounded-lg"
+                      >
+                        <div className="w-2 h-2 bg-accent-blue rounded-full" />
+                        <span className="text-sm">{cert}</span>
+                      </div>
+                    ))}
                   </div>
-                  <div>
-                    <h3 className="font-semibold text-hero-h4">Atul Mishra</h3>
-                    <p className="text-text-secondary text-hero-secondary">Network and AI/ML Engineer</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 theme-card-bg border theme-border rounded-lg flex items-center justify-center flex-shrink-0">
-                    <GraduationCap className="text-primary-copper" size={24} />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-hero-h4">Education</h3>
-                    <p className="text-text-secondary text-hero-secondary">Master&apos;s Degree in Information Technology</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 theme-card-bg border theme-border rounded-lg flex items-center justify-center flex-shrink-0">
-                    <MapPin className="text-primary-copper" size={24} />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-hero-h4">Location</h3>
-                    <p className="text-text-secondary text-hero-secondary">Australia</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-8">
-                <h3 className="font-semibold text-hero-h4 mb-4">Certifications</h3>
-                <div className="grid grid-cols-1 gap-3">
-                  {certifications.map((cert, index) => (
-                    <div
-                      key={index}
-                      className="flex items-center gap-3 p-3 theme-card-bg border theme-border rounded-lg"
-                    >
-                      <div className="w-2 h-2 bg-accent-blue rounded-full" />
-                      <span className="text-sm">{cert}</span>
-                    </div>
-                  ))}
-                </div>
+                ))}
               </div>
               </div>
             </motion.div>

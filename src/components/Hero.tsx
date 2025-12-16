@@ -34,10 +34,10 @@ const Hero = () => {
   }, []);
   
   const skills = [
-    { name: 'Cloud Architecture', enabled: true },
-    { name: 'Infrastructure as Code', enabled: true },
-    { name: 'AI / Machine Learning', enabled: true },
     { name: 'LLM & Generative AI', enabled: true },
+    { name: 'AI / ML Engineering', enabled: true },
+    { name: 'Computer Vision & Predictive Modeling', enabled: true },
+    { name: 'Cloud Architecture', enabled: true },
   ];
 
   const skillsDetailed = [
@@ -299,7 +299,7 @@ const Hero = () => {
                   </h3>
                   
                   <p className="text-sm sm:text-base text-primary-copper/80 mb-3 font-medium">
-                    Senior Developer
+                    Data Scientist
                   </p>
                   
                   <p 
@@ -308,7 +308,7 @@ const Hero = () => {
                       color: 'var(--text-primary)'
                     }}
                   >
-                    Passionate about building innovative solutions with expertise in modern web technologies and cloud architecture.
+                    Delivering scalable production-ready AI/ML solutions that turn complex data into clear, actionable insights.
                   </p>
                   
                   <Link
@@ -359,7 +359,7 @@ const Hero = () => {
                       color: 'var(--text-primary)'
                     }}
                   >
-                    Specializing in machine learning models and artificial intelligence solutions for complex business challenges.
+                    Build and deploy production-ready AI/ML systems, LLM, RAG pipelines, and predictive models that support real business decisions.
                   </p>
                   
                   <Link

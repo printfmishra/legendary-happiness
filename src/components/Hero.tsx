@@ -252,8 +252,8 @@ const Hero = () => {
                     color: 'var(--text-primary)'
                   }}
                 >
-                  Network & AI Architect, following the curve of innovation and machine learning. 
-                  Specializing in building scalable AI solutions and cloud infrastructure.
+                  Cloud & Network Infrastructure Engineer, designing and optimizing secure hybrid environments. 
+                  Specializing in cloud architecture, enterprise networking, and high-availability infrastructure.
                 </p>
                 
                 <div className="flex flex-wrap gap-3">

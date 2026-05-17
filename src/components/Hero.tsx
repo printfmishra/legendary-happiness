@@ -48,35 +48,6 @@ const Hero = () => {
     { category: 'LLMs/RAG', items: ['LangChain', 'LangGraph', 'AutoGen', 'RAG', 'Prompt Engineering', 'OpenAI APIs', 'Gemini'] },
   ];
 
-  const certifications = [
-    {
-      category: 'Networking & Cloud',
-      items: [
-        'AWS Certified Advanced Networking - Specialty',
-        'CompTIA Security+',
-        'Cisco Certified Network Associate',
-      ]
-    },
-    {
-      category: 'AI/ML & Data Science',
-      items: [
-        'Complete Machine Learning & Data Science Program',
-        'Introducing Generative AI with AWS',
-        'Certificate of Training - Data Science',
-        'Generative AI with Large Language Models',
-        'Deep Learning Specialization',
-        'Deep Learning Fundamentals Certification',
-      ]
-    },
-    {
-      category: 'DevOps & Big Data',
-      items: [
-        'Docker Foundations Professional Certificate',
-        'Big Data with PySpark',
-      ]
-    },
-  ];
-
   return (
     <section id="home" className="min-h-screen pt-20 theme-bg-gradient">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
@@ -374,70 +345,33 @@ const Hero = () => {
             </motion.div>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-12">
-            {/* Left Column */}
-            <div className="space-y-6 flex flex-col h-full">
-              {/* Team Certifications */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+          >
+            {skillsDetailed.map((skillGroup, index) => (
               <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              whileHover={{ y: -5 }}
-              className="theme-card-bg p-6 rounded-2xl shadow-card hover:shadow-card-hover transition-shadow duration-300 flex-grow"
-            >
-              <div>
-              <h3 className="font-semibold text-hero-h4 mb-6">Team Certifications</h3>
-              <div className="space-y-10">
-                {certifications.map((group, groupIndex) => (
-                  <div key={groupIndex} className="space-y-3">
-                    {group.items.map((cert, certIndex) => (
-                      <div
-                        key={certIndex}
-                        className="flex items-center gap-3 p-3 theme-card-bg border theme-border rounded-lg"
-                      >
-                        <div className="w-2 h-2 bg-accent-blue rounded-full" />
-                        <span className="text-sm">{cert}</span>
-                      </div>
-                    ))}
-                  </div>
-                ))}
-              </div>
-              </div>
-            </motion.div>
-            </div>
-
-            {/* Right side - Skills Grid (including Programming) */}
-            <div className="space-y-6">
-              <motion.div
-                initial={{ opacity: 0, x: 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-                className="space-y-6"
+                key={index}
+                className="theme-card-bg p-6 rounded-2xl shadow-card hover:shadow-card-hover transition-shadow duration-300"
+                whileHover={{ y: -5 }}
               >
-              {skillsDetailed.map((skillGroup, index) => (
-                <motion.div 
-                  key={index} 
-                  className="theme-card-bg p-6 rounded-2xl shadow-card hover:shadow-card-hover transition-shadow duration-300"
-                  whileHover={{ y: -5 }}
-                >
-                  <h4 className="font-semibold text-lg mb-4">{skillGroup.category}</h4>
-                  <div className="flex flex-wrap gap-2">
-                    {skillGroup.items.map((skill, idx) => (
-                      <span
-                        key={idx}
-                        className="px-4 py-2 bg-primary-copper text-white rounded-lg text-sm font-medium hover:opacity-90 transition-colors"
-                      >
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
-                </motion.div>
-              ))}
-            </motion.div>
-            </div>
-          </div>
+                <h4 className="font-semibold text-lg mb-4">{skillGroup.category}</h4>
+                <div className="flex flex-wrap gap-2">
+                  {skillGroup.items.map((skill, idx) => (
+                    <span
+                      key={idx}
+                      className="px-4 py-2 bg-primary-copper text-white rounded-lg text-sm font-medium hover:opacity-90 transition-colors"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
       </div>
     </section>
